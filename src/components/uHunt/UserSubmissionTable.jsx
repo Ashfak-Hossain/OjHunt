@@ -13,7 +13,7 @@ import mapVerdictToLabel from './mapUvaVerdictToLabel';
 import mapLanguageToLabel from './mapLanguagetoLabel';
 import PropTypes from 'prop-types';
 
-const UserSubmissionTable = ({ subs }) => {
+const UserSubmissionTable = ({ subs, rowsPerPage }) => {
   return (
     <div>
       <TableContainer padding="20px">
@@ -39,31 +39,33 @@ const UserSubmissionTable = ({ subs }) => {
               </Tr>
             </Thead>
             <Tbody>
-              {subs.map((sub) => {
-                const [
-                  submissionId,
-                  problemId,
-                  verdictId,
-                  runtime,
-                  submissionTime,
-                  languageId,
-                ] = sub;
+              {subs
+                .slice(0, rowsPerPage === 'all' ? subs.length : rowsPerPage)
+                .map((sub) => {
+                  const [
+                    submissionId,
+                    problemId,
+                    verdictId,
+                    runtime,
+                    submissionTime,
+                    languageId,
+                  ] = sub;
 
-                const submitTimeAgo = formatDistanceToNow(
-                  new Date(submissionTime * 1000),
-                  { addSuffix: true }
-                );
+                  const submitTimeAgo = formatDistanceToNow(
+                    new Date(submissionTime * 1000),
+                    { addSuffix: true }
+                  );
 
-                return (
-                  <Tr key={submissionId}>
-                    <Td>{problemId}</Td>
-                    <Td>{mapVerdictToLabel(verdictId)}</Td>
-                    <Td>{mapLanguageToLabel(languageId)}</Td>
-                    <Td>{runtime}</Td>
-                    <Td>{submitTimeAgo}</Td>
-                  </Tr>
-                );
-              })}
+                  return (
+                    <Tr key={submissionId}>
+                      <Td>{problemId}</Td>
+                      <Td>{mapVerdictToLabel(verdictId)}</Td>
+                      <Td>{mapLanguageToLabel(languageId)}</Td>
+                      <Td>{runtime}</Td>
+                      <Td>{submitTimeAgo}</Td>
+                    </Tr>
+                  );
+                })}
             </Tbody>
           </Table>
         ) : (
@@ -76,6 +78,7 @@ const UserSubmissionTable = ({ subs }) => {
 
 UserSubmissionTable.propTypes = {
   subs: PropTypes.array.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
 };
 
 export default UserSubmissionTable;
