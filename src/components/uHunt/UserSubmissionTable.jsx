@@ -7,6 +7,7 @@ import {
   Tbody,
   Td,
   Text,
+  Stack,
 } from '@chakra-ui/react';
 import { formatDistanceToNow } from 'date-fns';
 import mapVerdictToLabel from './mapUvaVerdictToLabel';
@@ -15,7 +16,7 @@ import PropTypes from 'prop-types';
 
 const UserSubmissionTable = ({ subs, rowsPerPage }) => {
   return (
-    <div>
+    <Stack borderWidth="1px" borderRadius="lg" overflow="hidden">
       <TableContainer padding="20px">
         {subs && subs.length > 0 ? (
           <Table size="sm">
@@ -40,7 +41,7 @@ const UserSubmissionTable = ({ subs, rowsPerPage }) => {
             </Thead>
             <Tbody>
               {subs
-                .slice(0, rowsPerPage === 'all' ? subs.length : rowsPerPage)
+                .slice(0, rowsPerPage === 'ALL' ? subs.length : rowsPerPage)
                 .map((sub) => {
                   const [
                     submissionId,
@@ -72,7 +73,7 @@ const UserSubmissionTable = ({ subs, rowsPerPage }) => {
           <Text>No Submissions</Text>
         )}
       </TableContainer>
-    </div>
+    </Stack>
   );
 };
 
