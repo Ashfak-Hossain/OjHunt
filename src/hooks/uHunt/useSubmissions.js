@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { uHuntClient } from '../../services/uHuntService';
+import { CanceledError } from 'axios';
 
 const useSubmissions = (userid) => {
   const [problemSubmission, setProblemSubmission] = useState({});
@@ -16,9 +17,12 @@ const useSubmissions = (userid) => {
         setLoading(false);
       })
       .catch((error) => {
-        setError(error && error.message ? error.message : 'An error occurred');
+        if (error instanceof CanceledError) return;
+        setError(error.message);
         setLoading(false);
       });
+
+    return () => controller.abort();
   }, [userid]);
 
   let { subs } = problemSubmission;
