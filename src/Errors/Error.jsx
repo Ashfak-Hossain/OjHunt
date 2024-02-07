@@ -1,12 +1,14 @@
-import { Alert, AlertIcon, AlertTitle } from '@chakra-ui/react';
+import { Alert, AlertIcon, AlertTitle, Box } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 const ErrorAlert = ({ message }) => {
   return (
-    <Alert status="error">
-      <AlertIcon />
-      <AlertTitle>{message}</AlertTitle>
-    </Alert>
+    <Box marginY="20px">
+      <Alert status="error" borderRadius="base">
+        <AlertIcon />
+        <AlertTitle>{message}</AlertTitle>
+      </Alert>
+    </Box>
   );
 };
 
