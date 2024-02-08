@@ -23,7 +23,7 @@ const useSubmissions = (userid) => {
       });
 
     return () => controller.abort();
-  }, [userid, uHuntClient]);
+  }, [uHuntClient]);
 
   let { subs } = problemSubmission;
 
