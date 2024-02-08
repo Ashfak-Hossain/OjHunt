@@ -5,13 +5,14 @@ import useSubmissions from '../../hooks/uHunt/useSubmissions';
 import ErrorAlert from '../../Errors/error';
 import UserSubmissionTable from './userSubmissionTable';
 import TableRowsPerPage from './TableRowsPerPage';
+
 const UvaTable = ({ userid }) => {
-  const { subs, loading, error } = useSubmissions(userid);
+  const { subs, error } = useSubmissions(userid);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   return (
     <>
       {error && <ErrorAlert message={error} />}
-      {loading && <Text>Loading...</Text>}
+
       <HStack
         borderWidth="1px"
         borderRadius="base"
@@ -25,6 +26,7 @@ const UvaTable = ({ userid }) => {
         </HStack>
       </HStack>
       <br />
+
       <UserSubmissionTable subs={subs} rowsPerPage={rowsPerPage} />
     </>
   );

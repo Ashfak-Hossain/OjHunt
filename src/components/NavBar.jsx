@@ -46,7 +46,7 @@ const NavBar = () => {
           <DrawerCloseButton />
           <DrawerHeader>Online Judges</DrawerHeader>
           <DrawerBody>
-            <OnlineJudgeNavigation />
+            <OnlineJudgeNavigation onClose={onClose} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

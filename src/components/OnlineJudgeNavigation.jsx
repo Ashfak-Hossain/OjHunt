@@ -8,13 +8,20 @@ import {
   Image,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { IoHome } from 'react-icons/io5';
 import onlineJudges from '../data/onlineJudges';
 
-const OnlineJudgeNavigation = () => {
+const OnlineJudgeNavigation = ({ onClose }) => {
   const [activeJudge, setActiveJudge] = useState(null);
   const buttonColor = useColorModeValue('gray');
+
+  const handleClick = (id) => {
+    setActiveJudge(id);
+    onClose();
+  };
+
   return (
     <Stack>
       <List spacing={3}>
@@ -44,7 +51,7 @@ const OnlineJudgeNavigation = () => {
                   <Image src={judge.icon} alt={`${judge.name} Icon`} />
                 </Box>
               }
-              onClick={() => setActiveJudge(judge.id)}
+              onClick={() => handleClick(judge.id)}
             >
               {judge.name}
             </Button>
@@ -53,6 +60,10 @@ const OnlineJudgeNavigation = () => {
       </List>
     </Stack>
   );
+};
+
+OnlineJudgeNavigation.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default OnlineJudgeNavigation;
