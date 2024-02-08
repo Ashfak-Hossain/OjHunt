@@ -13,13 +13,15 @@ import { Link } from 'react-router-dom';
 import { IoHome } from 'react-icons/io5';
 import onlineJudges from '../data/onlineJudges';
 
-const OnlineJudgeNavigation = ({ onClose }) => {
+const OnlineJudgeNavigation = ({ onClose, isDrawer }) => {
   const [activeJudge, setActiveJudge] = useState(null);
   const buttonColor = useColorModeValue('gray');
 
-  const handleClick = (id) => {
+  const handleClick = (id, isDrawer) => {
     setActiveJudge(id);
-    onClose();
+    if (isDrawer) {
+      onClose();
+    }
   };
 
   return (
@@ -33,7 +35,7 @@ const OnlineJudgeNavigation = ({ onClose }) => {
             variant={activeJudge === null ? 'solid' : 'outline'}
             w="90%"
             leftIcon={<IoHome />}
-            onClick={() => setActiveJudge(null)}
+            onClick={() => handleClick(null, isDrawer)}
           >
             Home
           </Button>
@@ -51,7 +53,7 @@ const OnlineJudgeNavigation = ({ onClose }) => {
                   <Image src={judge.icon} alt={`${judge.name} Icon`} />
                 </Box>
               }
-              onClick={() => handleClick(judge.id)}
+              onClick={() => handleClick(judge.id, isDrawer)}
             >
               {judge.name}
             </Button>
@@ -64,6 +66,7 @@ const OnlineJudgeNavigation = ({ onClose }) => {
 
 OnlineJudgeNavigation.propTypes = {
   onClose: PropTypes.func.isRequired,
+  isDrawer: PropTypes.bool,
 };
 
 export default OnlineJudgeNavigation;
