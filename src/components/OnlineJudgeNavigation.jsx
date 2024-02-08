@@ -65,7 +65,7 @@ const OnlineJudgeNavigation = ({ onClose, isDrawer }) => {
 };
 
 OnlineJudgeNavigation.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
   isDrawer: PropTypes.bool,
 };
 
