@@ -100,7 +100,7 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
                           {mapVerdictToLabel(verdictId)}
                         </Tag>
                       </Td>
-                      <Td>{mapLanguageToLabel(languageId)}</Td>
+                      <Td>{mapLanguageToLabel(languageId).name}</Td>
                       <Td>{formatRuntime}</Td>
                       <Td>{formatSubmissionTime(submissionTime)}</Td>
                     </Tr>
