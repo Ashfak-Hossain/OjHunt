@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import useSubmissions from '../../../hooks/uHunt/useSubmissions';
 import ErrorAlert from '../../../Errors/error';
 import UserSubmissionTable from './userSubmissionTable/UserSubmissionTable';
-import TableRowsPerPage from './userSubmissionTable/TableRowsPerPage';
+import TableRowSelector from './userSubmissionTable/TableRowSelector';
 
 const UvaTable = ({ userid, problems }) => {
   const { subs, error } = useSubmissions(userid);
@@ -22,7 +22,7 @@ const UvaTable = ({ userid, problems }) => {
         <Text fontSize="2xl">UVa Last Submissions</Text>
         <HStack>
           <Text fontSize="md">Rows per page: </Text>
-          <TableRowsPerPage onChange={setRowsPerPage} value={rowsPerPage} />
+          <TableRowSelector onChange={setRowsPerPage} value={rowsPerPage} />
         </HStack>
       </HStack>
       <br />

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const UHunt = ({ userid }) => {
   const { problems, loading, error } = useProblem();
+
   if (loading) return 'Loading...';
   if (error) return `Error! ${error}`;
 

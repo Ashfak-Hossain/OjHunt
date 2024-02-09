@@ -2,7 +2,7 @@ import { Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 
-const TableRowsPerPage = ({ onChange, value }) => {
+const TableRowSelector = ({ onChange, value }) => {
   const options = [5, 10, 25, 50, 100, 'ALL'];
 
   return (
@@ -27,9 +27,9 @@ const TableRowsPerPage = ({ onChange, value }) => {
   );
 };
 
-TableRowsPerPage.propTypes = {
+TableRowSelector.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.number.isRequired,
 };
 
-export default TableRowsPerPage;
+export default TableRowSelector;
