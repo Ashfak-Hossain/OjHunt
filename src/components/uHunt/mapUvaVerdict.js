@@ -1,76 +1,25 @@
-const mapVerdictToLabel = (verdictId) => {
-  switch (verdictId) {
-    case 10:
-      return 'Submission error';
-    case 15:
-      return "Can't be judged";
-    case 20:
-      return 'In queue';
-    case 30:
-      return 'Compile error';
-    case 35:
-      return 'Restricted function';
-    case 40:
-      return 'Runtime error';
-    case 45:
-      return 'Output limit';
-    case 50:
-      return 'Time limit';
-    case 60:
-      return 'Memory limit';
-    case 70:
-      return 'Wrong answer';
-    case 80:
-      return 'Presentation error';
-    case 90:
-      return 'Accepted';
-    default:
-      return 'Unknown verdict';
-  }
+const verdictMap = {
+  0: { name: '- In queue -', short_name: 'QU', color: '#000000' }, // OT
+  10: { name: 'SubmissionErr', short_name: 'SE', color: '#000000' }, // OT
+  15: { name: "Can't be judged", short_name: 'CJ', color: '#000000' }, // OT
+  20: { name: '- In queue -', short_name: 'QU', color: '#000000' }, // OT
+  30: { name: 'Compile error', short_name: 'CE', color: '#AAAA00' },
+  35: { name: 'Restricted function', short_name: 'RF', color: '#000000' }, // OT
+  40: { name: 'Runtime error', short_name: 'RE', color: '#00AAAA' },
+  45: { name: 'Output limit', short_name: 'OL', color: '#000066' },
+  50: { name: 'Time limit', short_name: 'TL', color: '#0000FF' },
+  60: { name: 'Memory limit', short_name: 'ML', color: '#0000AA' },
+  70: { name: 'Wrong answer', short_name: 'WA', color: '#FF0000' },
+  80: { name: 'PresentationE', short_name: 'PE', color: '#666600' },
+  90: { name: 'Accepted', short_name: 'AC', color: '#00AA00' },
 };
 
-// 10 : Submission error
-// 15 : Can't be judged
-// 20 : In queue
-// 30 : Compile error
-// 35 : Restricted function
-// 40 : Runtime error
-// 45 : Output limit
-// 50 : Time limit
-// 60 : Memory limit
-// 70 : Wrong answer
-// 80 : PresentationE
-// 90 : Accepted
+const mapVerdictToLabel = (verdictId) => {
+  return verdictMap[verdictId].name;
+};
 
 const mapVerdictIDtoColor = (verdictId) => {
-  switch (verdictId) {
-    case 10:
-      return 'red';
-    case 15:
-      return 'red';
-    case 20:
-      return 'black';
-    case 30:
-      return 'red';
-    case 35:
-      return 'red';
-    case 40:
-      return 'cyan';
-    case 45:
-      return 'red';
-    case 50:
-      return 'blue';
-    case 60:
-      return 'yellow';
-    case 70:
-      return 'red';
-    case 80:
-      return 'orange';
-    case 90:
-      return 'green';
-    default:
-      return 'black';
-  }
+  return verdictMap[verdictId].color;
 };
 
 export { mapVerdictToLabel, mapVerdictIDtoColor };

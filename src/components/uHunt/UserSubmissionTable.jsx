@@ -20,8 +20,6 @@ import mapLanguageToLabel from './mapLanguagetoLabel';
 import PropTypes from 'prop-types';
 
 const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
-  console.log(problems);
-
   return (
     <Stack borderWidth="1px" borderRadius="lg" overflow="hidden">
       <TableContainer padding="20px">
@@ -66,12 +64,14 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
                   // eslint-disable-next-line no-unused-vars
                   const [id, number, title] = problem;
 
+                  const formatRuntime = (Number(runtime) / 1000).toFixed(3);
+
                   return (
                     <Tr key={submissionId}>
                       <Td paddingX={0}>
                         <HStack justifyContent="space-between">
                           <Box>
-                            {number} - {title}
+                            {} - {title}
                           </Box>
                           <IconButton
                             aria-label="uDebug"
@@ -93,12 +93,15 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
                         </HStack>
                       </Td>
                       <Td>
-                        <Tag colorScheme={mapVerdictIDtoColor(verdictId)}>
+                        <Tag
+                          color={mapVerdictIDtoColor(verdictId)}
+                          colorScheme="cyan"
+                        >
                           {mapVerdictToLabel(verdictId)}
                         </Tag>
                       </Td>
                       <Td>{mapLanguageToLabel(languageId)}</Td>
-                      <Td>{runtime}</Td>
+                      <Td>{formatRuntime}</Td>
                       <Td>{formatSubmissionTime(submissionTime)}</Td>
                     </Tr>
                   );
