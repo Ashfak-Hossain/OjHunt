@@ -1,18 +1,13 @@
 import { Text, HStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import useSubmissions from '../../../hooks/uHunt/useSubmissions';
-import ErrorAlert from '../../../Errors/error';
 import UserSubmissionTable from './userSubmissionTable/UserSubmissionTable';
 import TableRowSelector from './userSubmissionTable/TableRowSelector';
 
-const UvaTable = ({ userid, problems }) => {
-  const { subs, error } = useSubmissions(userid);
+const UvaTable = ({ subs, problems }) => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   return (
     <>
-      {error && <ErrorAlert message={error} />}
-
       <HStack
         borderWidth="1px"
         borderRadius="base"
@@ -37,8 +32,8 @@ const UvaTable = ({ userid, problems }) => {
 };
 
 UvaTable.propTypes = {
-  userid: PropTypes.number.isRequired || PropTypes.string.isRequired,
   problems: PropTypes.array.isRequired,
+  subs: PropTypes.array.isRequired,
 };
 
 export default UvaTable;
