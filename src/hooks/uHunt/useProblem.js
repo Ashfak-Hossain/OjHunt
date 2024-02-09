@@ -10,17 +10,40 @@ const useProblem = () => {
   useEffect(() => {
     const controller = new AbortController();
 
-    uHuntClient
-      .get('/p', { signal: controller.signal })
-      .then((response) => {
-        setProblems(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        if (error instanceof CanceledError) return;
-        setError(error.message);
-        setLoading(false);
-      });
+    const fetchProblems = async () => {
+      try {
+        const storedProblems = localStorage.getItem('problems');
+
+        if (storedProblems) {
+          setProblems(JSON.parse(storedProblems));
+          setLoading(false);
+        } else {
+          const response = await uHuntClient.get('/p', {
+            signal: controller.signal,
+          });
+          setProblems(response.data);
+          localStorage.setItem('problems', JSON.stringify(response.data));
+          setLoading(false);
+        }
+      } catch (error) {
+        if (error instanceof CanceledError) {
+          setError(error.message);
+          setLoading(false);
+        }
+      }
+    };
+
+    const fetchDataAndScheduleRefresh = async () => {
+      await fetchProblems();
+
+      const oneDay = 1000 * 60 * 60 * 24;
+
+      const interval = setInterval(fetchProblems, oneDay);
+
+      return () => clearInterval(interval);
+    };
+
+    fetchDataAndScheduleRefresh();
 
     return () => controller.abort();
   }, []);
