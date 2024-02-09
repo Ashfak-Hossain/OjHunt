@@ -37,7 +37,7 @@ const UvaTable = ({ userid, problems }) => {
 };
 
 UvaTable.propTypes = {
-  userid: PropTypes.number.isRequired,
+  userid: PropTypes.number.isRequired || PropTypes.string.isRequired,
   problems: PropTypes.array.isRequired,
 };
 

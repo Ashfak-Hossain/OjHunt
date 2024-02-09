@@ -29,7 +29,7 @@ const TableRowSelector = ({ onChange, value }) => {
 
 TableRowSelector.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default TableRowSelector;

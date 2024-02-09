@@ -52,7 +52,8 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
 
 UserSubmissionTable.propTypes = {
   subs: PropTypes.array.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
   problems: PropTypes.array.isRequired,
 };
 

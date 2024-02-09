@@ -28,8 +28,6 @@ const SubmissionRow = ({ submission, problems }) => {
 
   const problem = problems.find((problem) => problem[0] === problemId);
 
-  console.log(submission);
-
   // eslint-disable-next-line no-unused-vars
   const [id, number, title] = problem;
 
