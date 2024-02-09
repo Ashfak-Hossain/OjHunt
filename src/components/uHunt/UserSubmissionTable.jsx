@@ -13,6 +13,7 @@ import {
   Image,
   Box,
   Tag,
+  Link,
 } from '@chakra-ui/react';
 import formatSubmissionTime from './mapSubmitTime';
 import { mapVerdictToLabel, mapVerdictIDtoColor } from './mapUvaVerdict';
@@ -66,12 +67,30 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
 
                   const formatRuntime = (Number(runtime) / 1000).toFixed(3);
 
+                  const formatTitle = (problemNumber) => {
+                    const id = Math.floor(problemNumber / 100);
+                    return `https://onlinejudge.org/external/${id}/${number}.pdf`;
+                  };
+
                   return (
                     <Tr key={submissionId}>
-                      <Td paddingX={0}>
+                      <Td paddingX={0} paddingY={1}>
                         <HStack justifyContent="space-between">
                           <Box>
-                            {} - {title}
+                            <Link
+                              color="cyan.300"
+                              href={formatTitle(number)}
+                              isExternal
+                            >
+                              {number}
+                            </Link>{' '}
+                            -{' '}
+                            <Link
+                              href={`https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=${problemId}`}
+                              isExternal
+                            >
+                              {title}
+                            </Link>
                           </Box>
                           <IconButton
                             aria-label="uDebug"
