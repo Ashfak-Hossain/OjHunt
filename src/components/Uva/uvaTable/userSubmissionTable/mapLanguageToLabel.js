@@ -1,4 +1,4 @@
-const language_map = {
+const languageMap = {
   1: { name: 'ANSI C', color: 'darkorange' },
   2: { name: 'Java', color: 'red' },
   3: { name: 'C++', color: 'blue' },
@@ -6,8 +6,6 @@ const language_map = {
   5: { name: 'C++11', color: 'green' },
 };
 
-const mapLanguageToLabel = (languageID) => {
-  return language_map[languageID];
-};
+const mapLanguageToLabel = (languageID) => languageMap[languageID];
 
 export default mapLanguageToLabel;
