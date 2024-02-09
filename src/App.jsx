@@ -1,8 +1,9 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
-import UHunt from './components/uHunt/UHunt';
+
 import OnlineJudgeList from './components/OnlineJudgeNavigation';
 import { Route, Routes } from 'react-router-dom';
+import UHunt from './components/Uva/uHunt/UHunt';
 
 const App = () => {
   return (

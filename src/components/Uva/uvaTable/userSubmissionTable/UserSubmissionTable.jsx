@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 import formatSubmissionTime from './mapSubmitTime';
 import { mapVerdictToLabel, mapVerdictIDtoColor } from './mapUvaVerdict';
-import mapLanguageToLabel from './mapLanguagetoLabel';
+import mapLanguageToLabel from './mapLanguageToLabel';
 import PropTypes from 'prop-types';
 
 const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {

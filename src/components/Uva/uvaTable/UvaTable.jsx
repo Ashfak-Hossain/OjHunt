@@ -1,10 +1,10 @@
 import { Text, HStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import useSubmissions from '../../hooks/uHunt/useSubmissions';
-import ErrorAlert from '../../Errors/error';
-import UserSubmissionTable from './userSubmissionTable';
-import TableRowsPerPage from './TableRowsPerPage';
+import useSubmissions from '../../../hooks/uHunt/useSubmissions';
+import ErrorAlert from '../../../Errors/error';
+import UserSubmissionTable from './userSubmissionTable/UserSubmissionTable';
+import TableRowsPerPage from './userSubmissionTable/TableRowsPerPage';
 
 const UvaTable = ({ userid, problems }) => {
   const { subs, error } = useSubmissions(userid);
