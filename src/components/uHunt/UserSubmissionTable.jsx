@@ -12,9 +12,10 @@ import {
   IconButton,
   Image,
   Box,
+  Tag,
 } from '@chakra-ui/react';
 import { formatDistanceToNow } from 'date-fns';
-import mapVerdictToLabel from './mapUvaVerdictToLabel';
+import { mapVerdictToLabel, mapVerdictIDtoColor } from './mapUvaVerdict';
 import mapLanguageToLabel from './mapLanguagetoLabel';
 import PropTypes from 'prop-types';
 
@@ -96,7 +97,11 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
                           />
                         </HStack>
                       </Td>
-                      <Td>{mapVerdictToLabel(verdictId)}</Td>
+                      <Td>
+                        <Tag colorScheme={mapVerdictIDtoColor(verdictId)}>
+                          {mapVerdictToLabel(verdictId)}
+                        </Tag>
+                      </Td>
                       <Td>{mapLanguageToLabel(languageId)}</Td>
                       <Td>{runtime}</Td>
                       <Td>{submitTimeAgo}</Td>
