@@ -14,7 +14,7 @@ import {
   Box,
   Tag,
 } from '@chakra-ui/react';
-import { formatDistanceToNow } from 'date-fns';
+import formatSubmissionTime from './mapSubmitTime';
 import { mapVerdictToLabel, mapVerdictIDtoColor } from './mapUvaVerdict';
 import mapLanguageToLabel from './mapLanguagetoLabel';
 import PropTypes from 'prop-types';
@@ -59,11 +59,6 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
                     languageId,
                   ] = sub;
 
-                  const submitTimeAgo = formatDistanceToNow(
-                    new Date(submissionTime * 1000),
-                    { addSuffix: true }
-                  );
-
                   const problem = problems.find(
                     (problem) => problem[0] === problemId
                   );
@@ -104,7 +99,7 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
                       </Td>
                       <Td>{mapLanguageToLabel(languageId)}</Td>
                       <Td>{runtime}</Td>
-                      <Td>{submitTimeAgo}</Td>
+                      <Td>{formatSubmissionTime(submissionTime)}</Td>
                     </Tr>
                   );
                 })}
