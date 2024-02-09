@@ -1,9 +1,9 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
-
 import OnlineJudgeList from './components/OnlineJudgeNavigation';
 import { Route, Routes } from 'react-router-dom';
 import UHunt from './components/Uva/uHunt/UHunt';
+import NotFound from './components/Errors/NotFound';
 
 const App = () => {
   return (
@@ -29,6 +29,7 @@ const App = () => {
       <GridItem area="main">
         <Routes>
           <Route path="/uva" element={<UHunt userid={1448698} />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </GridItem>
 
