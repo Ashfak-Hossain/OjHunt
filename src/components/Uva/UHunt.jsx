@@ -15,7 +15,7 @@ const UHunt = ({ userid }) => {
   return (
     <>
       <UvaTable subs={subs} problems={problems} />
-      <SubmissionStatus />
+      <SubmissionStatus submissionProblems={subs} problems={problems} />
     </>
   );
 };
