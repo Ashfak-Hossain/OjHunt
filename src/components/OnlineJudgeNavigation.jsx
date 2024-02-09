@@ -1,24 +1,11 @@
-import {
-  Button,
-  List,
-  ListItem,
-  Stack,
-  useColorModeValue,
-  Box,
-  Image,
-} from '@chakra-ui/react';
-import { useState } from 'react';
+import { Button, List, ListItem, Stack, Box, Image } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { IoHome } from 'react-icons/io5';
 import onlineJudges from '../data/onlineJudges';
 
 const OnlineJudgeNavigation = ({ onClose, isDrawer }) => {
-  const [activeJudge, setActiveJudge] = useState(null);
-  const buttonColor = useColorModeValue('gray');
-
   const handleClick = (id, isDrawer) => {
-    setActiveJudge(id);
     if (isDrawer) {
       onClose();
     }
@@ -31,8 +18,7 @@ const OnlineJudgeNavigation = ({ onClose, isDrawer }) => {
           <Button
             as={Link}
             to="/"
-            colorScheme={activeJudge === null ? buttonColor : 'gray'}
-            variant={activeJudge === null ? 'solid' : 'outline'}
+            background={'#1F2733'}
             w="90%"
             leftIcon={<IoHome />}
             onClick={() => handleClick(null, isDrawer)}
@@ -45,8 +31,7 @@ const OnlineJudgeNavigation = ({ onClose, isDrawer }) => {
             <Button
               as={Link}
               to={`/${judge.name.toLowerCase()}`}
-              colorScheme={activeJudge === judge.id ? buttonColor : 'gray'}
-              variant={activeJudge === judge.id ? 'solid' : 'outline'}
+              background={'#1F2733'}
               w="90%"
               leftIcon={
                 <Box boxSize="25px" as="span" mr="2" display="inline-block">

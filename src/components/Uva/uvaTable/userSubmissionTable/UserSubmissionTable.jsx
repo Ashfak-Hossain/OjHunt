@@ -13,7 +13,7 @@ import SubmissionRow from './SubmissionTableRow';
 
 const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
   return (
-    <Stack borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <Stack background={'#1F2733'} borderRadius="lg" overflow="hidden">
       <TableContainer padding="20px">
         {subs && subs.length > 0 ? (
           <Table size="sm">

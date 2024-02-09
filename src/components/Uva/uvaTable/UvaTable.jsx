@@ -9,7 +9,7 @@ const UvaTable = ({ subs, problems }) => {
   return (
     <>
       <HStack
-        borderWidth="1px"
+        background={'#1F2733'}
         borderRadius="base"
         padding="10px"
         justifyContent="space-between"

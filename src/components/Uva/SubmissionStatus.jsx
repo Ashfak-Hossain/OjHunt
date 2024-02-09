@@ -21,7 +21,7 @@ const SubmissionStatus = ({ submissionProblems, problems }) => {
   ).length;
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" p="20px" my={5}>
+    <Box background={'#1F2733'} borderRadius="lg" p="20px" my={5}>
       <StatGroup>
         <Stat>
           <StatLabel fontSize={20} fontWeight={'bold'} color={'darkcyan'}>
