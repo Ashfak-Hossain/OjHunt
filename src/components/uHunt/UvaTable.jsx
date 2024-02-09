@@ -6,7 +6,7 @@ import ErrorAlert from '../../Errors/error';
 import UserSubmissionTable from './userSubmissionTable';
 import TableRowsPerPage from './TableRowsPerPage';
 
-const UvaTable = ({ userid }) => {
+const UvaTable = ({ userid, problems }) => {
   const { subs, error } = useSubmissions(userid);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   return (
@@ -27,13 +27,18 @@ const UvaTable = ({ userid }) => {
       </HStack>
       <br />
 
-      <UserSubmissionTable subs={subs} rowsPerPage={rowsPerPage} />
+      <UserSubmissionTable
+        subs={subs}
+        rowsPerPage={rowsPerPage}
+        problems={problems}
+      />
     </>
   );
 };
 
 UvaTable.propTypes = {
   userid: PropTypes.number.isRequired,
+  problems: PropTypes.array.isRequired,
 };
 
 export default UvaTable;

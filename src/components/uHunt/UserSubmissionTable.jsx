@@ -8,13 +8,19 @@ import {
   Td,
   Text,
   Stack,
+  HStack,
+  IconButton,
+  Image,
+  Box,
 } from '@chakra-ui/react';
 import { formatDistanceToNow } from 'date-fns';
 import mapVerdictToLabel from './mapUvaVerdictToLabel';
 import mapLanguageToLabel from './mapLanguagetoLabel';
 import PropTypes from 'prop-types';
 
-const UserSubmissionTable = ({ subs, rowsPerPage }) => {
+const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
+  console.log(problems);
+
   return (
     <Stack borderWidth="1px" borderRadius="lg" overflow="hidden">
       <TableContainer padding="20px">
@@ -57,9 +63,33 @@ const UserSubmissionTable = ({ subs, rowsPerPage }) => {
                     { addSuffix: true }
                   );
 
+                  const problem = problems.find(
+                    (problem) => problem[0] === problemId
+                  );
+
+                  // eslint-disable-next-line no-unused-vars
+                  const [id, number, title] = problem;
+
                   return (
                     <Tr key={submissionId}>
-                      <Td>{problemId}</Td>
+                      <Td>
+                        <HStack justifyContent="space-between">
+                          <Box>
+                            {number} - {title}
+                          </Box>
+                          <IconButton
+                            aria-label="uDebug"
+                            variant="ghost"
+                            icon={
+                              <Image
+                                src="/udebug.webp"
+                                alt="uDebug"
+                                boxSize="20px"
+                              />
+                            }
+                          />
+                        </HStack>
+                      </Td>
                       <Td>{mapVerdictToLabel(verdictId)}</Td>
                       <Td>{mapLanguageToLabel(languageId)}</Td>
                       <Td>{runtime}</Td>
@@ -80,6 +110,7 @@ const UserSubmissionTable = ({ subs, rowsPerPage }) => {
 UserSubmissionTable.propTypes = {
   subs: PropTypes.array.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
+  problems: PropTypes.array.isRequired,
 };
 
 export default UserSubmissionTable;

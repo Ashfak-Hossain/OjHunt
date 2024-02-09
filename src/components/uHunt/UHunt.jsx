@@ -1,10 +1,15 @@
+import useProblem from '../../hooks/uHunt/useProblem';
 import UvaTable from './UvaTable';
 import PropTypes from 'prop-types';
 
 const UHunt = ({ userid }) => {
+  const { problems, loading, error } = useProblem();
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error}`;
+
   return (
     <>
-      <UvaTable userid={userid} />
+      <UvaTable userid={userid} problems={problems} />
     </>
   );
 };
