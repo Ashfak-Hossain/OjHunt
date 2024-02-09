@@ -2,7 +2,7 @@ import { Grid, GridItem, Show } from '@chakra-ui/react';
 import NavBar from './components/NavBar';
 import OnlineJudgeList from './components/OnlineJudgeNavigation';
 import { Route, Routes } from 'react-router-dom';
-import UHunt from './components/Uva/uHunt/UHunt';
+import UHunt from './components/Uva/UHunt';
 import NotFound from './components/Errors/NotFound';
 
 const App = () => {

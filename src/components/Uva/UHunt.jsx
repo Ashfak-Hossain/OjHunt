@@ -1,5 +1,5 @@
-import useProblem from '../../../hooks/uHunt/useProblem';
-import UvaTable from '../uvaTable/UvaTable';
+import useProblem from '../../hooks/uHunt/useProblem';
+import UvaTable from './uvaTable/UvaTable';
 import PropTypes from 'prop-types';
 
 const UHunt = ({ userid }) => {
