@@ -72,7 +72,7 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
 
                   return (
                     <Tr key={submissionId}>
-                      <Td>
+                      <Td paddingX={0}>
                         <HStack justifyContent="space-between">
                           <Box>
                             {number} - {title}
@@ -87,6 +87,12 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
                                 boxSize="20px"
                               />
                             }
+                            onClick={() => {
+                              window.open(
+                                `https://www.udebug.com/UVa/${number}`,
+                                '_blank'
+                              );
+                            }}
                           />
                         </HStack>
                       </Td>
