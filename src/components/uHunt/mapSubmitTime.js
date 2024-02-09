@@ -13,7 +13,7 @@ const formatSubmissionTime = (submissionTimeInSeconds) => {
   } else if (differenceInSeconds < 86400) {
     const hours = Math.floor(differenceInSeconds / 3600);
     return `${hours} hour${hours === 1 ? '' : 's'} ago`;
-  } else if (differenceInSeconds < 259200) {
+  } else if (differenceInSeconds < 2592000) {
     const days = Math.floor(differenceInSeconds / 86400);
     return `${days} day${days === 1 ? '' : 's'} ago`;
   } else {
