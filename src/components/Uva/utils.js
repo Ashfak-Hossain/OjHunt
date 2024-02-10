@@ -14,4 +14,13 @@ const countSubmissions = (problems) => {
   return problems.length;
 };
 
-export { countSubmissions, solvedProblems };
+const LinkStyles = {
+  _hover: {
+    textDecoration: 'none',
+    color: 'cyan.400',
+    fontWeight: 'extrabold',
+  },
+  marginRight: '0.3em',
+};
+
+export { countSubmissions, solvedProblems, LinkStyles };
