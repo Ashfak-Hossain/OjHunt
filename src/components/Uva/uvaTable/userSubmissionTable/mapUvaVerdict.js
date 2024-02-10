@@ -18,4 +18,4 @@ const mapVerdictToLabel = (verdictId) => verdictMap[verdictId].name;
 
 const mapVerdictIDtoColor = (verdictId) => verdictMap[verdictId].color;
 
-export { mapVerdictToLabel, mapVerdictIDtoColor };
+export { mapVerdictToLabel, mapVerdictIDtoColor, verdictMap };
