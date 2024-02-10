@@ -11,11 +11,12 @@ const calculateVerdictData = (submissionProblems) => {
   const labels = [...verdictCounts.keys()];
   const data = [...verdictCounts.values()];
 
-  const percentages = data.map((count) =>
-    ((count / submissionProblems.length) * 100).toFixed(0)
-  );
-
   const { backgroundColors, borderColors } = getColorsForVerdicts(labels);
+
+  labels.reverse();
+  data.reverse();
+  backgroundColors.reverse();
+  borderColors.reverse();
 
   return {
     labels: labels,
@@ -28,7 +29,6 @@ const calculateVerdictData = (submissionProblems) => {
         hoverOffset: 5,
       },
     ],
-    percentages: percentages,
   };
 };
 
