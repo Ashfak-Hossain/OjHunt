@@ -16,20 +16,19 @@ const useProblem = () => {
 
         if (storedProblems) {
           setProblems(JSON.parse(storedProblems));
-          setLoading(false);
         } else {
           const response = await uHuntClient.get('/p', {
             signal: controller.signal,
           });
           setProblems(response.data);
           localStorage.setItem('problems', JSON.stringify(response.data));
-          setLoading(false);
         }
       } catch (error) {
         if (error instanceof CanceledError) {
           setError(error.message);
-          setLoading(false);
         }
+      } finally {
+        setLoading(false);
       }
     };
 
