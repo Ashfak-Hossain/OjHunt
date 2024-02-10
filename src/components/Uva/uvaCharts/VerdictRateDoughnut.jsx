@@ -9,15 +9,13 @@ import {
   ListItem,
   Center,
 } from '@chakra-ui/react';
-import { calculateVerdictData, mapVerdicts } from './chartData';
+import { calculateVerdictData } from './chartData';
 import PropTypes from 'prop-types';
 
 ChartJS.register(ArcElement, Tooltip);
 
 const VerdictRateDoughnut = ({ submissionProblems }) => {
   const data = calculateVerdictData(submissionProblems);
-
-  console.log(mapVerdicts(submissionProblems));
 
   return (
     <Box background={'#1F2733'} borderRadius="lg" p="20px" my={5}>
@@ -37,8 +35,8 @@ const VerdictRateDoughnut = ({ submissionProblems }) => {
             <List spacing={3}>
               {data.labels.map((label, i) => {
                 return (
-                  <ListItem key={i} fontSize={16} color={'white'}>
-                    {label}
+                  <ListItem key={i}>
+                    {label} : {data.datasets[0].data[i]}
                   </ListItem>
                 );
               })}

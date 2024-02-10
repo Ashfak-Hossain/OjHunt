@@ -16,12 +16,19 @@ const mapVerdicts = (submissionProblems) => {
 };
 
 const calculateVerdictData = (submissionProblems) => {
+  const labels = [...mapVerdicts(submissionProblems).keys()];
+  const data = [...mapVerdicts(submissionProblems).values()];
+
+  const percentages = data.map((count) => {
+    return ((count / submissionProblems.length) * 100).toFixed(0);
+  });
+
   return {
-    labels: [...mapVerdicts(submissionProblems).keys()],
+    labels: labels,
     datasets: [
       {
-        label: '# of Votes',
-        data: [...mapVerdicts(submissionProblems).values()],
+        // label: 'Verdict Rate',
+        data: data,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -42,6 +49,7 @@ const calculateVerdictData = (submissionProblems) => {
         hoverOffset: 5,
       },
     ],
+    percentages: percentages,
   };
 };
 
@@ -88,4 +96,4 @@ const calculateVerdictData = (submissionProblems) => {
 //   },
 // };
 
-export { calculateVerdictData, mapVerdicts };
+export { calculateVerdictData };
