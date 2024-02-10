@@ -15,7 +15,7 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
   return (
     <Stack background={'#1F2733'} borderRadius="lg" overflow="hidden">
       <TableContainer padding="20px">
-        {subs && subs.length > 0 ? (
+        {(subs && subs.length > 0) || problems ? (
           <Table size="sm">
             <Thead backgroundColor="blue.900">
               <Tr>

@@ -28,7 +28,8 @@ const SubmissionRow = ({ submission, problems }) => {
 
   const problem = problems.find((problem) => problem[0] === problemId);
 
-  // eslint-disable-next-line no-unused-vars
+  if (!problem) return null;
+
   const [id, number, title] = problem;
 
   const formatRuntime = (Number(runtime) / 1000).toFixed(3);
