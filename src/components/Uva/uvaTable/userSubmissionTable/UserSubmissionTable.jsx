@@ -29,6 +29,7 @@ const UserSubmissionTable = ({ subs, rowsPerPage, problems }) => {
               </Tr>
             </Thead>
             <Tbody>
+              {}
               {subs
                 .slice(0, rowsPerPage === 'ALL' ? subs.length : rowsPerPage)
                 .map((sub) => {

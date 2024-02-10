@@ -3,8 +3,10 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import UserSubmissionTable from './userSubmissionTable/UserSubmissionTable';
 import TableRowSelector from './userSubmissionTable/TableRowSelector';
+import Loading from '../../Loading';
 
-const UvaTable = ({ subs, problems }) => {
+const UvaTable = ({ subs, problems, loading }) => {
+  console.log('uvaTable component', loading);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   return (
     <>
@@ -21,12 +23,15 @@ const UvaTable = ({ subs, problems }) => {
         </HStack>
       </HStack>
       <br />
-
-      <UserSubmissionTable
-        subs={subs}
-        rowsPerPage={rowsPerPage}
-        problems={problems}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <UserSubmissionTable
+          subs={subs}
+          rowsPerPage={rowsPerPage}
+          problems={problems}
+        />
+      )}
     </>
   );
 };
@@ -34,6 +39,7 @@ const UvaTable = ({ subs, problems }) => {
 UvaTable.propTypes = {
   problems: PropTypes.array.isRequired,
   subs: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default UvaTable;
