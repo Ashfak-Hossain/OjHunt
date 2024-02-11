@@ -1,5 +1,5 @@
 import { Text, HStack } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import UserSubmissionTable from './userSubmissionTable/UserSubmissionTable';
 import TableRowSelector from './userSubmissionTable/TableRowSelector';
@@ -8,6 +8,18 @@ import Loading from '../../Loading';
 const UvaTable = ({ subs, problems, loading }) => {
   console.log('uvaTable component', loading);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const memoizedUserSubmissionTable = useMemo(
+    () => (
+      <UserSubmissionTable
+        subs={subs}
+        problems={problems}
+        rowsPerPage={rowsPerPage}
+      />
+    ),
+    [subs, problems, rowsPerPage]
+  );
+
   return (
     <>
       <HStack
@@ -23,15 +35,7 @@ const UvaTable = ({ subs, problems, loading }) => {
         </HStack>
       </HStack>
       <br />
-      {loading ? (
-        <Loading />
-      ) : (
-        <UserSubmissionTable
-          subs={subs}
-          rowsPerPage={rowsPerPage}
-          problems={problems}
-        />
-      )}
+      {loading ? <Loading /> : memoizedUserSubmissionTable}
     </>
   );
 };
